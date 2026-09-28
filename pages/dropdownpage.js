@@ -12,6 +12,8 @@ class DropdownPage extends CommonPage {
     async getSelectedValue(dropdownLocator) {
         return this.page.locator(dropdownLocator).inputValue();
     }
+
+   
 }
 
 module.exports = { DropdownPage };

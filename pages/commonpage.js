@@ -22,6 +22,10 @@ class CommonPage {
         await this.page.goto(url);
     }
 
+     async closeBrowser() {
+        await this.page.close();
+    }
+
     async verifyTitle(titleText) {
         await expect(this.page).toHaveTitle(new RegExp(titleText));
     }

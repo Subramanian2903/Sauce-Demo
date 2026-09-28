@@ -1,10 +1,14 @@
 const { test } = require('@playwright/test');
 const { CheckboxPage } = require('../pages/checkboxpage');
 
-// Task 1
-// Open URL
-// Select Checkbox 1
-// Verify Checkbox 1 is checked
+
+test.describe('Checkbox Practices', () => {
+    
+test.afterEach(async ({page}) => {
+
+    const checkboxPage = new CheckboxPage(page);
+    await checkboxPage.closeBrowser();
+});
 
 test('Validate Checkbox one Selection', async ({ page }) => {
     const checkboxPage = new CheckboxPage(page);
@@ -14,10 +18,6 @@ test('Validate Checkbox one Selection', async ({ page }) => {
 
     await checkboxPage.verifyChecked(0);
 });
-
-// Task 2
-// Uncheck Checkbox 2
-// Verify Checkbox 2 is unchecked
 
 test('Validate Checkbox two UnSelection', async ({ page }) => {
     const checkboxPage = new CheckboxPage(page);
@@ -33,8 +33,8 @@ test("Validate Multicheck boxes", async ({ page }) => {
 
     await checkboxPage.openDemoQaCheckboxPage();
     await checkboxPage.expandHome();
-
     await checkboxPage.checkByName('Select Desktop');
     await checkboxPage.verifyCheckedByName('Select Desktop');
 
+});
 });

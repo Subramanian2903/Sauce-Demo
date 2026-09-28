@@ -1,25 +1,30 @@
 const { test } = require('@playwright/test');
 const { DropdownPage } = require('../pages/dropdownpage');
 const { URLS } = require('../utils/urls');
+const { dropdownData } = require('../testData/dropdownData');
 
-// Tasks:
+test.describe('DropdowncheckBox Practices', () => {
 
-// Select Option 1
-// Verify value
-// Select Option 2
-// Verify value
-// Print selected option
+test.beforeEach(async ({page}) => {
+
+    const dropdownPage = new DropdownPage(page);
+    await dropdownPage.open(URLS.EXPANDTESTING_DROPDOWN);
+});
+
+test.afterEach(async ({page}) => {
+
+    const dropdownPage = new DropdownPage(page);
+    await dropdownPage.closeBrowser();
+});
 
 test ('Validate Dropdown and assertion selection', async ({page}) => {
+
     const dropdownPage = new DropdownPage(page);
 
-    await dropdownPage.open(URLS.EXPANDTESTING_DROPDOWN);
-
-    await dropdownPage.selectOption('#dropdown', '1');
-
-    await dropdownPage.selectOption('#dropdown', '2');
-
+    await dropdownPage.selectOption('#dropdown', dropdownData.optionOne);
+    await dropdownPage.selectOption('#dropdown', dropdownData.optionTwo);
     const value = await dropdownPage.getSelectedValue('#dropdown');
     console.log(value);
 
+});
 });

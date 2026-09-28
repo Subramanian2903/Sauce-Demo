@@ -2,9 +2,14 @@ const { test } = require('@playwright/test');
 const { CommonPage } = require('../pages/commonpage');
 const { URLS } = require('../utils/urls');
 
-//Task1
-// Open Google
-// Verify title contains Google
+test.describe('URL Practices', () => {
+    
+test.afterEach(async ({page}) => {
+
+    const commonPage = new CommonPage(page);
+    await commonPage.closeBrowser();
+});
+
 
 test('Verify Google website', async ({ page }) => {
     const commonPage = new CommonPage(page);
@@ -13,9 +18,6 @@ test('Verify Google website', async ({ page }) => {
     await commonPage.verifyTitle('Google');
 });
 
-//Task2
-// Open Playwright website
-// Verify title contains Playwright
 
 test('Verify Playwright website', async ({ page }) => {
     const commonPage = new CommonPage(page);
@@ -24,9 +26,6 @@ test('Verify Playwright website', async ({ page }) => {
     await commonPage.verifyTitle('Playwright');
 });
 
-// Task3
-// Open GitHub
-// Print page title
 
 test('Verify Github website', async ({ page }) => {
     const commonPage = new CommonPage(page);
@@ -34,4 +33,4 @@ test('Verify Github website', async ({ page }) => {
     await commonPage.open(URLS.GITHUB);
     await commonPage.printTitle();
 });
-
+});
