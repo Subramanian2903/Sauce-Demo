@@ -1,5 +1,6 @@
 const { test } = require('@playwright/test');
-const { DropdownPage, URLS } = require('../utils/commonActions');
+const { DropdownPage } = require('../pages/dropdownpage');
+const { URLS } = require('../utils/urls');
 
 // Tasks:
 

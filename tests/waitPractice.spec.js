@@ -1,5 +1,5 @@
 const { test } = require('@playwright/test');
-const { PlaywrightPage, URLS } = require('../utils/commonActions');
+const { PlaywrightPage } = require('../pages/playwrightpage');
 
 test('Verify wait functionality', async ({ page }) => {
     const playwrightPage = new PlaywrightPage(page);

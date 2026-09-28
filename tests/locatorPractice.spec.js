@@ -1,5 +1,5 @@
 const { test } = require('@playwright/test');
-const { PlaywrightPage } = require('../utils/commonActions');
+const { PlaywrightPage } = require('../pages/playwrightpage');
 
 // Task1
 // Click "Get Started" using getByRole()

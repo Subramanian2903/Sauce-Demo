@@ -1,5 +1,5 @@
 const { test } = require('@playwright/test');
-const { CheckboxPage } = require('../utils/commonActions');
+const { CheckboxPage } = require('../pages/checkboxpage');
 
 // Task 1
 // Open URL

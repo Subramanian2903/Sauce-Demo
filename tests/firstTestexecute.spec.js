@@ -1,5 +1,6 @@
 const { test } = require('@playwright/test');
-const { CommonPage, URLS } = require('../utils/commonActions');
+const { CommonPage } = require('../pages/commonpage');
+const { URLS } = require('../utils/urls');
 
 //Task1
 // Open Google
