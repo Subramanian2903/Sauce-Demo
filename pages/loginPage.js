@@ -1,10 +1,9 @@
-const{expect} = require('@playwright/test');
+const{ URLS } = require ('../constants/urls');
+const { CommonPage } = require('./commonPage.js');
 
-import { URLS } from '../constants/urls';
-
-class LoginPage {
+class LoginPage extends CommonPage{
     constructor(page) {
-        this.page = page;
+        super(page);
         this.usernameInput = page.locator('#user-name');
         this.passwordInput = page.locator('#password');
         this.loginButton = page.locator('#login-button');
@@ -18,11 +17,9 @@ class LoginPage {
     async login(username, password) {
         await this.usernameInput.fill(username);
         await this.passwordInput.fill(password);
-    }
-
-    async clickLoginButton() {
         await this.loginButton.click();
     }
+
 }
 
 module.exports = { LoginPage };
