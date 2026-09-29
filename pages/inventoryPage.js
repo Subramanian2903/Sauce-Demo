@@ -1,8 +1,9 @@
 const { expect } = require('@playwright/test');
+const { CommonPage } = require('./commonPage.js');
 
-class InventoryPage {
+class InventoryPage extends CommonPage {
     constructor(page) {
-        this.page = page;
+        super(page);
         this.inventoryContainer = page.locator('.inventory_item');
         this.sortDropDown = page.locator('.product_sort_container');
         this.productNames = this.inventoryContainer.locator('.inventory_item_name');
@@ -16,9 +17,14 @@ class InventoryPage {
     async verifyInventoryItems() {
 
         for (const item of await this.inventoryContainer.all()) {
-            await expect(item.locator('.inventory_item_name')).toBeVisible();
-            await expect(item.locator('.inventory_item_price')).toHaveText(/^\$\d+\.\d{2}$/);
-            await expect(item.getByRole('button', { name: 'Add to cart' })).toBeVisible();
+            const productName = item.locator('.inventory_item_name');
+            const productPrice = item.locator('.inventory_item_price');
+            const addToCartButton = item.getByRole('button', { name: 'Add to cart' });
+
+            await this.verifyElementVisible(productName);
+            await this.verifyElementVisible(productPrice);
+            await this.verifyPriceTextVisible(productPrice);
+            await this.verifyElementVisible(addToCartButton);
         }
     }
 

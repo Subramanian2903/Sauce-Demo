@@ -9,8 +9,16 @@ class CommonPage {
           
         await expect(this.page).toHaveURL(/inventory.html/);
     }
-async verifyErrorMessage(text) {
 
+    async verifyElementVisible(locator) {
+        await expect(locator).toBeVisible();
+    }
+
+    async verifyPriceTextVisible(locator) {
+        await expect(locator).toHaveText(/^\$\d+\.\d{2}$/);
+    }
+
+    async verifyErrorMessage(text) {
         await expect(this.errorMessage).toHaveText(text);
 }
 

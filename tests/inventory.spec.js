@@ -11,6 +11,10 @@ test.describe('Veirfy Inventory Pages',() => {
         await loginPage.login(LOGIN_DATA.USERNAME, LOGIN_DATA.PASSWORD);
     });
 
+    test.afterEach(async ({ page }) => {
+        console.log('Test completed for page:', page.url());
+    });
+
     test('Verify Inventory item count has displayed six', async({page}) =>{
           
         const inventoryPage = new InventoryPage(page);
@@ -25,7 +29,7 @@ test.describe('Veirfy Inventory Pages',() => {
 });
 
     test('Verify inventory sorting options', async ({ page }) => {
-        
+
         const inventoryPage = new InventoryPage(page);
         await inventoryPage.verifyInventoryPageSorting();
     });
