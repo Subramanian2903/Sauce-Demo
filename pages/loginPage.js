@@ -1,5 +1,5 @@
 const{ URLS } = require ('../constants/urls');
-const { CommonPage } = require('./commonPage.js');
+const { CommonPage } = require('./commonpage.js');
 
 class LoginPage extends CommonPage{
     constructor(page) {
