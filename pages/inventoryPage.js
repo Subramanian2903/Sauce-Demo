@@ -1,5 +1,5 @@
 const { expect } = require('@playwright/test');
-const { CommonPage } = require('./commonPage.js');
+const { CommonPage } = require('./commonpage.js');
 
 class InventoryPage extends CommonPage {
     constructor(page) {
