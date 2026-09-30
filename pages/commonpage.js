@@ -1,12 +1,11 @@
-const {expect} = require('@playwright/test');
+const { expect } = require('@playwright/test');
 
 class CommonPage {
     constructor(page) {
         this.page = page;
-    }   
+    }
 
     async verifyLoginSuccess() {
-          
         await expect(this.page).toHaveURL(/inventory.html/);
     }
 
@@ -18,10 +17,9 @@ class CommonPage {
         await expect(locator).toHaveText(/^\$\d+\.\d{2}$/);
     }
 
-    async verifyErrorMessage(text) {
-        await expect(this.errorMessage).toHaveText(text);
-}
-
+    async verifyErrorMessage(locator, text) {
+        await expect(locator).toHaveText(text);
+    }
 }
 
 module.exports = { CommonPage };

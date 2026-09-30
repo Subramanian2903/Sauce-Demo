@@ -3,8 +3,7 @@ const { LoginPage } = require('../pages/loginPage.js');
 const { InventoryPage } = require('../pages/inventoryPage.js');
 const { LOGIN_DATA } = require('../testData/loginData.js');
 
-test.describe('Veirfy Inventory Pages',() => {
-
+test.describe('Verify Inventory Pages', () => {
     test.beforeEach(async ({ page }) => {
         const loginPage = new LoginPage(page);
         await loginPage.navigateToLogin();
@@ -15,21 +14,17 @@ test.describe('Veirfy Inventory Pages',() => {
         console.log('Test completed for page:', page.url());
     });
 
-    test('Verify Inventory item count has displayed six', async({page}) =>{
-          
+    test('Verify inventory item count displays six products', async ({ page }) => {
         const inventoryPage = new InventoryPage(page);
         await inventoryPage.verifyInventoryItemcount();
     });
 
-    test('Verify every inventory product shows its name, price, and Add to cart button', 
-    async ({ page }) => {
-
-	const inventoryPage = new InventoryPage(page);
-	await inventoryPage.verifyInventoryItems();
-});
+    test('Verify every inventory product shows its name, price, and Add to cart button', async ({ page }) => {
+        const inventoryPage = new InventoryPage(page);
+        await inventoryPage.verifyInventoryItems();
+    });
 
     test('Verify inventory sorting options', async ({ page }) => {
-
         const inventoryPage = new InventoryPage(page);
         await inventoryPage.verifyInventoryPageSorting();
     });
