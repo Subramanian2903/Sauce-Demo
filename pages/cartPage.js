@@ -8,16 +8,11 @@ class CartPage extends InventoryPage {
         this.cartBadge = page.locator('.shopping_cart_badge');
         this.cartItems = page.locator('.cart_item');
         this.cartItemNames = this.cartItems.locator('.inventory_item_name');
+        this.checkoutButton = page.locator('#checkout');
     }
 
-    async addProduct(productName) {
-        const product = this.inventoryContainer.filter({ hasText: productName });
-        await product.getByRole('button', { name: 'Add to cart' }).click();
-    }
-
-    async removeProduct(productName) {
-        const product = this.inventoryContainer.filter({ hasText: productName });
-        await product.getByRole('button', { name: 'Remove' }).click();
+    async goToCheckout() {
+        await this.checkoutButton.click();
     }
 
     async verifyCartBadgeCount(count) {

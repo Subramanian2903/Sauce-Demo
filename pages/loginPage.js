@@ -1,7 +1,7 @@
-const{ URLS } = require ('../constants/urls');
+const { URLS } = require('../constants/urls');
 const { CommonPage } = require('./commonpage.js');
 
-class LoginPage extends CommonPage{
+class LoginPage extends CommonPage {
     constructor(page) {
         super(page);
         this.usernameInput = page.locator('#user-name');
@@ -19,7 +19,6 @@ class LoginPage extends CommonPage{
         await this.passwordInput.fill(password);
         await this.loginButton.click();
     }
-
 }
 
 module.exports = { LoginPage };
