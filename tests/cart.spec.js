@@ -46,8 +46,9 @@ test.describe('Verify Cart pages', () => {
 		}
 	});
 
-	    test('Opening the cart shows every selected product', async ({ page }) => {
+	    test('Opening the cart shows every selected product name and price', async ({ page }) => {
 		const cartPage = new CartPage(page);
+
 		for (const productName of productNames) {
 			await cartPage.addProduct(productName);
 		}
