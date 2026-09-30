@@ -8,6 +8,7 @@ class CartPage extends InventoryPage {
         this.cartBadge = page.locator('.shopping_cart_badge');
         this.cartItems = page.locator('.cart_item');
         this.cartItemNames = this.cartItems.locator('.inventory_item_name');
+        this.cartItemPrices = this.cartItems.locator('.inventory_item_price');
         this.checkoutButton = page.locator('#checkout');
     }
 
@@ -32,6 +33,11 @@ class CartPage extends InventoryPage {
     async verifyCartContainsProducts(productNames) {
         await expect(this.cartItems).toHaveCount(productNames.length);
         await expect(this.cartItemNames).toHaveText(productNames);
+
+        for (const item of await this.cartItems.all()) {
+            const price = item.locator('.inventory_item_price');
+            await this.verifyPriceTextVisible(price);
+        }
     }
 }
 
