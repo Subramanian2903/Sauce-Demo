@@ -7,7 +7,7 @@ test.describe('Reqres User APIs', () => {
         const api = new ReqresApi(request);
         const response = await api.getUser(API_DATA.USER_ID);
 
-        expect(response.status()).toBe(200);
+        api.verifyStatusCode(response, 200);
 
         const body = await response.json();
         expect(body.data.id).toBe(API_DATA.USER_ID);
@@ -18,7 +18,7 @@ test.describe('Reqres User APIs', () => {
         const api = new ReqresApi(request);
         const response = await api.getUsers(API_DATA.USER_PAGE);
 
-        expect(response.status()).toBe(200);
+        api.verifyStatusCode(response, 200);
 
         const body = await response.json();
         expect(body.page).toBe(API_DATA.USER_PAGE);
